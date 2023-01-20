@@ -1,0 +1,127 @@
+---
+title: "Analisis Pengaruh Ekspor Lada Hitam Ke Negara Tiongkok Terhadap Nilai Tukar Rupiah Pada Tahun 2012-2021"
+subtitle: "Metode Penelitian Politeknik APP Jakarta"
+author: "Greasella Agustina Lumbanbatu"
+date: 2023-01-20
+number-sections: true
+format:
+  html: default
+  docx: default
+editor: visual
+---
+
+![](poltekapp.jpg)
+
+## Pendahuluan
+
+### Latar belakang
+
+Ekspor adalah salah satu kegiatan perdagangan internasional. Ekspor merupakan kegiatan mengeluarkan barang dari daerah pabean. Kegiatan ekspor ini cukup berpengaruh terhadap perekonomian suatu negara. Yang mana bisa berdampak positif maupun negatif.
+
+Seperti yang kita ketahui di Indonesia sendiri terdapat banyak komoditi yang di ekspor. Dari banyaknya sektor yang berkontribusi dalam kegiatan eskpor. Perkebunan menjadi salah satunya. Salah satunya adalah komoditi lada hitam. Dimana lada hitam menjadi komoditi yang cukup banyak diproduksi dan juga di ekspor. Salah satu negara yang menjadi negara tujuan ekspor lada hitam ini adalah negara Tiongkok. Nilai tukar rupiah negara Indonesia terhadap negara Tiongkok selalu mengalami perubahan. Ada banyak faktor yang menyebabkan perubahan tersebut, diantaranya tingkat infalsi, suku bunga, maupun keadaan ekonomi dan politik. Begitu juga ekspor lada hitam ini yang mempengaruhi perubahan kurs.
+
+### Ruang lingkup
+
+Penelitian ini menggunakan data dengan subjek nilai ekspor lada hitam dari negara Indonesia ke negara Tiongkok. Data yang digunakan diambil dari badan pusat statistik selama sembilan tahun terakhir (2012-2021). Dimana data ini kemudian dibandingkan dengan data nilai tukar rupiah.
+
+### Rumusan masalah
+
+Apakah ekspor lada hitam ke Tiongkok dapat mempengaruhi nilai tukar rupiah?
+
+### Tujuan dan manfaat penelitian
+
+Untuk mengetahui bagaimana ekspor lada hitam ke Tiongkok dapat mempengaruhi nilai tukar rupiah.
+
+### Package
+
+Packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library(tidyverse)
+library(readxl)
+library(WDI)
+```
+
+## Studi pustaka
+
+Jurnal berjudul *"Analisis Pengaruh Ekspor Lada Hitam Ke Negara Tiongkok Terhadap Nilai Tukar Rupiah Pada Tahun 2012-2021*" ini dibuat dengan merujuk pada fakta tersedianya sumber daya alam mumpuni di Indonesia, pada komoditi lada hitam sebagai aspek utama dalam ekspor sektor perkebunan dan bagaimana dampak bagi nilai tukar rupiah.
+
+Menurut data Badan Pusat Statistik (2012-2021) ditemukan bahwa ekspor tertinggi lada hitam pada tahun 2015 dengan nilai ekspor USD 211.515.000 dan ekspor lada hitam terendah pada tahun 2017 dengan nilai ekspor USD 18.729.000.
+
+Amir M. S (2004:1), ekspor adalah upaya melakukan penjualan komoditas di Indonesia kepada negara lain, dengan mengharapkan pembayaran dalam valuta asing, serta melakukan komoditi dengan memakai bahasa asing. 
+
+Untuk itulah, dalam menanggapi bagaimana dampak nilai ekspor lada hitam ke Amerika Serikat terhadap nilai tukar rupiah. Jurnal ini dibuat.
+
+## Metode penelitian
+
+### Data Nilai Ekspor Lada Hitam ke Negara Tiongkok dan Nilai Tukar Rupiah
+
+| Tahun | Nilai Ekspor (CNY) | Nilai Tukar (IDR) |
+|-------|--------------------|-------------------|
+| 2012  | 71150,6            | 158290165,58      |
+| 2013  | 32764,73           | 72897201,83       |
+| 2014  | 64610,62           | 143750079,58      |
+| 2015  | 142800,12          | 317711393,63      |
+| 2016  | 84348,72           | 187664744,28      |
+| 2017  | 12644,51           | 28132362,68       |
+| 2018  | 18075,93           | 40216556,05       |
+| 2019  | 35754,21           | 79548389,92       |
+| 2020  | 62481,93           | 139014037,1       |
+| 2021  | 59922,51           | 133319670,78      |
+
+**Sumber data badan pusat statistik (FOB:USD 000)**
+
+```{r}
+#| label: fig-mpg
+#| fig-cap: "City and highway mileage for 38 popular models of cars.Color by number of cylinders"
+library(readxl)
+dat<-read_excel("latihan.xlsx")
+reg<-lm(Y~X,data=dat)
+plot(dat$Y,dat$X,ylab="Nilai Tukar",xlab="Nilai Ekspor" )
+```
+
+### Metode analisis
+
+Teknik analisis yang digunakan dalam penelitian ini adalah teknik kuantitatif dan penjabaran deskriptif. Teknik analisis kuantitatif merupakan analisis yang dilakukan dengan perhitungan angka-angka yang faktor yang mempengaruhi indeks nilai tukar rupiah terhadap nilai ekspor lada hitam ke Tiongkok . Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini bermaksud mencari hubungan antara nilai tukar dan nilai ekspor. Spesifikasi yang dilakukan adalah:
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ Dimana: Yt adalah nilai tukar Yuan (Tiongkok) terhadap mata uang negara lain., β0 adalah koefisien konstanta; β1 adalah parameter; Xt adalah nilai ekspor dan μi adalah error term.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+| Variabel  | Coeficient | Std.Error  | t.value    | Prob          |
+|-----------|------------|------------|------------|---------------|
+| Intercept | -445.60097 | 2115.07477 | -0.211     | 0.838         |
+| X         | 2224.85745 | 0.03083    | 72173..809 | \<2e-16\*\*\* |
+
+| R-Squared          | 1          |
+|--------------------|------------|
+| Adjusted R-Squared | 1          |
+| F-Statistic        | 5.209e+09  |
+| Prob (F-statistic) | \< 2.2e-16 |
+
+: Ekspor lada hitam berpengaruh terhadap nilai tukar. Di tunjukkan dengan di lihat dari probabilitas X ( Nilai Ekspor) yang signifikan. Dimana nilai ekspor sering menjadi faktor yang dapat mendorong naik dan turunnya kurs mata uang suatu negara. Nilai koefisien ekspor sebesar 22224.85745 yang berarti kenaikan perubahan nilai ekspor berpengaruh terhadap nilai kurs rupiah terhadap CNY. Dengan hasil ini maka dapat di simpulkan bahwa pendapatan ekspor berpengaruh positif terhadap nilai tukar rupiah.
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+library(readxl)
+dat<-read_excel("latihan.xlsx")
+reg<-lm(Y~X,data=dat)
+summary(reg)
+```
+
+## Kesimpulan
+
+Berdasarkan data hasil analisis kuantitatif yang telah dilakukan, setelah diamati ekspor lada hitam ke negara Tiongkok berpengaruh positif terhadap nilai tukar rupiah dan lada merupakan salah satu komoditas rempah utama yang memiliki volume ekspor terbesar di Indonesia. Oleh sebab itu apabila ekspor lada putih ke negara Tiongkok berpengaruh positif terhadap nilai tukar rupiah maka mempengaruhi nilai kurs rupiah terhadap CNY.
+
+## Referensi
+
+*Badan Pusat Statistik*. (n.d.). Retrieved January 19, 2023, from <https://www.bps.go.id/statictable/2019/02/18/2021/ekspor-lada-hitam-menurut-negara-tujuan-utama-2012--2021.html> Fadila, F. (2022, October 27). Mengenal Ekspor Impor: Pengertian, Tujuan, Manfaat dan Komoditasnya. *Gramedia Literasi*. <https://www.gramedia.com/literasi/ekspor-impor/> Ekspor. (2023). In *Wikipedia bahasa Indonesia, ensiklopedia bebas*. <https://id.wikipedia.org/w/index.php?title=Ekspor&oldid=22578789> Bhinneka. (2022, July 11). √ Pengertian Kurs, Jenis, dan Apa Saja yang Mempengaruhinya. *Blog Bhinneka*. <https://www.bhinneka.com/blog/kurs-adalah/> *mata uang usd ke china---Penelusuran Google*. (n.d.). Retrieved January 19, 2023, from <https://www.google.com/search?q=mata+uang+usd+ke+china&rlz=1C1UEAD_enID974ID974&sxsrf=AJOqlzXn294iRzPTapOaCvr2rSvlc-m0mg%3A1674128873383&ei=6S3JY8yGF8-rz7sPlPOd-AY&oq=mata&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgCMgkIIxAnEEYQggIyBAgjECcyBAgjECcyBwgAELEDEEMyBwgAELEDEEMyBAgAEEMyBAgAEEMyCwgAEIAEELEDEIMBMgQIABBDMgcIABCxAxBDOgcIIxDqAhAnOgcILhDqAhAnOgoILhDHARCvARBDSgQIQRgASgQIRhgAUKYIWL4kYKROaAJwAXgAgAGjAYgBiQWSAQMwLjWYAQCgAQGwAQrAAQE&sclient=gws-wiz-serp> *mata uang usd ke rupiah---Penelusuran Google*. (n.d.). Retrieved January 19, 2023, from <https://www.google.com/search?q=mata+uang+usd+ke+rupiah&rlz=1C1UEAD_enID974ID974&sxsrf=AJOqlzU-hJtParrHUsYtekx99uGb2ObB6Q%3A1674128887227&ei=9y3JY7nBDaO53LUPnZexgAE&oq=mata+uang+usd+ke+&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQARgBMgQIIxAnMgQIIxAnMgUIABCABDIICAAQgAQQywEyCAgAEIAEEMsBMggIABCABBDLATIICAAQgAQQywEyBggAEBYQHjIGCAAQFhAeMgYIABAWEB46CggAEEcQ1gQQsANKBAhBGABKBAhGGABQhA5Y-BVg2CRoAXABeACAAc8BiAGbBpIBBTAuNC4xmAEAoAEByAEIwAEB&sclient=gws-wiz-serp> *Top! Ekspor Lada Hitam Indonesia Meningkat 44,05 Persen di Kuartal I/2022*. (n.d.). Retrieved January 19, 2023, from <https://ekonomi.bisnis.com/read/20220713/12/1554346/top-ekspor-lada-hitam-indonesia-meningkat-4405-persen-di-kuartal-i2022>
